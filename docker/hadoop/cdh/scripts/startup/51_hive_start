@@ -1,0 +1,7 @@
+#!/bin/bash -ex
+
+cd /usr/lib/hive/scripts/metastore/upgrade/mysql && \
+    echo "CREATE DATABASE metastore; USE metastore; SOURCE hive-schema-1.1.0.mysql.sql;" | mysql
+/usr/bin/mysqladmin -u root password 'root'
+
+service hive-server2 start
